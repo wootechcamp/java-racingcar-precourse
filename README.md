@@ -27,7 +27,7 @@
 
 * [ ] 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다. => `laps`
 
-* [ ] 0에서 9 사이에서 random 값을 구할 수 있다. => `NumberGenerator` => `RanddomNumberGenerator`
+* [x] 0에서 9 사이에서 random 값을 구할 수 있다. => `NumberGenerator` => `RanddomNumberGenerator`
 
 * [ ] 생성된 랜덤값이 자동차는 4 이상일 경우 전진하고, 3 이하의 값이면 멈춘다. => `Car` 객체 스스로가 판단할 것인가?
 
