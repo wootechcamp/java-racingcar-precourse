@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -12,12 +11,10 @@ import java.io.PrintStream;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
-
+import nextstep.utils.Randoms;
 import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.function.Executable;
 import org.mockito.MockedStatic;
-
-import nextstep.utils.Randoms;
 
 public abstract class NSTest {
     private static final Duration TEST_TIMEOUT = Duration.ofSeconds(1L);
