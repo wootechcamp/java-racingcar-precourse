@@ -13,9 +13,9 @@ class CarTest {
     })
     void _5자_이하의_이름이_있는_자동차를_생성할_수_있다(String validName, String invalidName) {
         assertThatNoException()
-            .isThrownBy(() -> new Car(new CarName(validName)));
+            .isThrownBy(() -> new Car(new CarName(validName), new CarDistance(0)));
 
         assertThatExceptionOfType(IllegalCarNameException.class)
-            .isThrownBy(() -> new Car(new CarName(invalidName)));
+            .isThrownBy(() -> new Car(new CarName(invalidName), new CarDistance(0)));
     }
 }
