@@ -6,7 +6,7 @@ public class Car {
     private final CarName carName;
     private final CarDistance carDistance;
 
-    public Car(CarName carName, CarDistance carDistance) {
+    public Car(final CarName carName, final CarDistance carDistance) {
         this.carName = carName;
         this.carDistance = carDistance;
     }
@@ -20,14 +20,14 @@ public class Car {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
         if (!(o instanceof Car)) {
             return false;
         }
-        Car car = (Car)o;
+        final Car car = (Car)o;
         return Objects.equals(carName, car.carName);
     }
 

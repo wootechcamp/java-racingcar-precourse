@@ -8,7 +8,7 @@ public class CarNames {
 
     private final List<CarName> carNames;
 
-    public CarNames(String namesWithComma) {
+    public CarNames(final String namesWithComma) {
         this.carNames = convert(namesWithComma);
     }
 
@@ -16,7 +16,7 @@ public class CarNames {
         return carNames;
     }
 
-    private List<CarName> convert(String namesWithComma) {
+    private List<CarName> convert(final String namesWithComma) {
         final List<CarName> carNames = new ArrayList<>();
         final String[] names = namesWithComma.split(NAME_DELIMITER);
 

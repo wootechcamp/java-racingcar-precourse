@@ -8,31 +8,31 @@ public class CarName {
 
     private final String name;
 
-    public CarName(String name) {
+    public CarName(final String name) {
         verifyCarName(name);
 
         this.name = name;
     }
 
-    private void verifyCarName(String name) {
+    private void verifyCarName(final String name) {
         if (isNotLesserThanMaximumNameLength(name)) {
             throw new IllegalCarNameException();
         }
     }
 
-    private boolean isNotLesserThanMaximumNameLength(String name) {
+    private boolean isNotLesserThanMaximumNameLength(final String name) {
         return MAXIMUM_NAME_LENGTH < name.length();
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
         if (!(o instanceof CarName)) {
             return false;
         }
-        CarName carName = (CarName)o;
+        final CarName carName = (CarName)o;
         return Objects.equals(name, carName.name);
     }
 

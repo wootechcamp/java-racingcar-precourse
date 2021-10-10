@@ -7,7 +7,7 @@ import racinggame.component.NumberGenerator;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(CarNames carNames, NumberGenerator numberGenerator) {
+    public Cars(final CarNames carNames, final NumberGenerator numberGenerator) {
         this.cars = carsOf(carNames, numberGenerator);
     }
 
@@ -15,7 +15,7 @@ public class Cars {
         return cars;
     }
 
-    private List<Car> carsOf(CarNames carNames, NumberGenerator numberGenerator) {
+    private List<Car> carsOf(final CarNames carNames, final NumberGenerator numberGenerator) {
         final List<Car> cars = new ArrayList<>();
 
         for (final CarName carName : carNames.get()) {

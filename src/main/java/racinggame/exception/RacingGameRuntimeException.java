@@ -10,19 +10,19 @@ public class RacingGameRuntimeException extends RuntimeException {
         super(format(MESSAGE_PATTERN, DEFAULT_MESSAGE));
     }
 
-    public RacingGameRuntimeException(String message) {
+    public RacingGameRuntimeException(final String message) {
         super(format(MESSAGE_PATTERN, message));
     }
 
-    public RacingGameRuntimeException(String message, Throwable cause) {
+    public RacingGameRuntimeException(final String message, final Throwable cause) {
         super(format(MESSAGE_PATTERN, message), cause);
     }
 
-    public RacingGameRuntimeException(Throwable cause) {
+    public RacingGameRuntimeException(final Throwable cause) {
         super(format(MESSAGE_PATTERN, DEFAULT_MESSAGE), cause);
     }
 
-    public RacingGameRuntimeException(String message, Throwable cause, boolean enableSuppression,
+    public RacingGameRuntimeException(final String message, final Throwable cause, final boolean enableSuppression,
         boolean writableStackTrace) {
         super(format(MESSAGE_PATTERN, message), cause, enableSuppression, writableStackTrace);
     }

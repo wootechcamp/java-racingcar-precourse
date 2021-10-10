@@ -9,7 +9,7 @@ public class CarDistance {
 
     private final int distance;
 
-    public CarDistance(int number) {
+    public CarDistance(final int number) {
         verifyDistance(number);
 
         this.distance = judge(number);
@@ -19,17 +19,17 @@ public class CarDistance {
         return distance;
     }
 
-    private void verifyDistance(int number) {
+    private void verifyDistance(final int number) {
         if (isNegative(number)) {
             throw new NotAllowNegativeException("자동차의 이동거리");
         }
     }
 
-    private boolean isNegative(int number) {
+    private boolean isNegative(final int number) {
         return number < 0;
     }
 
-    private int judge(int number) {
+    private int judge(final int number) {
         if (isMovable(number)) {
             return 1;
         }
@@ -41,11 +41,11 @@ public class CarDistance {
         throw new IllegalCarDistanceStateException();
     }
 
-    private boolean isMovable(int number) {
+    private boolean isMovable(final int number) {
         return number >= MOVABLE_MINIMUM_NUMBER;
     }
 
-    private boolean isImmovable(int number) {
+    private boolean isImmovable(final int number) {
         return number <= IMMOVABLE_MAXIMUM_NUMBER;
     }
 }

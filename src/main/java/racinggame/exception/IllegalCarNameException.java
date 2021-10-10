@@ -10,7 +10,7 @@ public class IllegalCarNameException extends RacingGameRuntimeException {
         super(MESSAGE);
     }
 
-    public IllegalCarNameException(Throwable cause) {
+    public IllegalCarNameException(final Throwable cause) {
         super(MESSAGE, cause);
     }
 }
