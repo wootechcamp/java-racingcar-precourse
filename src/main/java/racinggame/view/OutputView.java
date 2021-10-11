@@ -5,7 +5,7 @@ public final class OutputView {
     private OutputView() {
     }
 
-    public static void printMessage(String message) {
+    public static void printMessage(final String message) {
         System.out.println(message);
     }
 
@@ -13,7 +13,7 @@ public final class OutputView {
         System.out.println();
     }
 
-    public static void printError(Throwable e) {
-        System.out.println(e.getMessage());
+    public static void printError(final Throwable cause) {
+        System.out.println(cause.getMessage());
     }
 }
