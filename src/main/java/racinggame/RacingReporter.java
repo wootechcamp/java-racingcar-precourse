@@ -28,12 +28,14 @@ public class RacingReporter {
     }
 
     private void joinWinner(final StringJoiner prize, final Car car) {
-        if (isJointAward(car)) {
-            prize.add(car.getName().toString());
+        if (isNotJointAward(car)) {
+            return;
         }
+
+        prize.add(car.getName().toString());
     }
 
-    private boolean isJointAward(Car car) {
-        return car.getDistance().get() == maximumDistance;
+    private boolean isNotJointAward(Car car) {
+        return car.getDistance().get() != maximumDistance;
     }
 }
