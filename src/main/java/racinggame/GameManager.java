@@ -6,14 +6,11 @@ import racinggame.domain.CarNames;
 import racinggame.domain.Cars;
 import racinggame.domain.Lap;
 import racinggame.domain.Laps;
-import racinggame.enums.GameStatus;
 import racinggame.exception.RacingGameRuntimeException;
 import racinggame.view.InputView;
 import racinggame.view.OutputView;
 
 public class GameManager {
-    private static GameStatus gameStatus;
-
     private final NumberGenerator numberGenerator;
     private final RacingReporter racingReporter;
 
@@ -21,13 +18,13 @@ public class GameManager {
         this.numberGenerator = numberGenerator;
         this.racingReporter = racingReporter;
 
-        readyGame();
+        RemoteController.readyGame();
     }
 
     public void start() {
-        startGame();
+        RemoteController.startGame();
 
-        while (gameStatus.isSustainable()) {
+        while (RemoteController.isSustainable()) {
             racing();
         }
     }
@@ -38,7 +35,8 @@ public class GameManager {
             final Laps laps = InputView.readLaps();
 
             round(laps, carNames);
-            terminateGame();
+
+            RemoteController.terminateGame();
         } catch (final RacingGameRuntimeException e) {
             OutputView.printError(e);
         }
@@ -65,17 +63,5 @@ public class GameManager {
 
             racingReporter.analyze(car);
         }
-    }
-
-    private void readyGame() {
-        gameStatus = GameStatus.READY;
-    }
-
-    private void startGame() {
-        gameStatus = GameStatus.START;
-    }
-
-    private void terminateGame() {
-        gameStatus = GameStatus.TERMINATE;
     }
 }
