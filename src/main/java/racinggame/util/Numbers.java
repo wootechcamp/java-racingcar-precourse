@@ -1,6 +1,6 @@
 package racinggame.util;
 
-import racinggame.exception.IllegalInputArgumentException;
+import racinggame.exception.IllegalRacingGameArgumentException;
 
 public final class Numbers {
 
@@ -15,7 +15,7 @@ public final class Numbers {
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            throw new IllegalInputArgumentException("숫자만 입력할 수 있습니다.", e);
+            throw new IllegalRacingGameArgumentException("숫자로 된 문자열만 허용합니다.", e);
         }
     }
 }
