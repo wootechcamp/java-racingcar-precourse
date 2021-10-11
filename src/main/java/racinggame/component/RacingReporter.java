@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.component;
 
 import java.util.StringJoiner;
 import racinggame.domain.Car;

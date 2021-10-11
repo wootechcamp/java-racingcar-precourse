@@ -1,27 +1,24 @@
-package racinggame;
+package racinggame.component;
 
 import java.util.EnumSet;
 import racinggame.enums.GameStatus;
 
-public final class RemoteController {
+public class GameStateController {
     private static GameStatus gameStatus;
 
-    private RemoteController() {
-    }
-
-    public static boolean isSustainable() {
+    public boolean isSustainable() {
         return EnumSet.of(GameStatus.READY, GameStatus.START).contains(gameStatus);
     }
 
-    public static void readyGame() {
+    public void readyGame() {
         gameStatus = GameStatus.READY;
     }
 
-    public static void startGame() {
+    public void startGame() {
         gameStatus = GameStatus.START;
     }
 
-    public static void terminateGame() {
+    public void terminateGame() {
         gameStatus = GameStatus.TERMINATE;
     }
 }

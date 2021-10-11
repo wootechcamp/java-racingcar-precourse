@@ -1,6 +1,8 @@
 package racinggame;
 
 import racinggame.component.NumberGenerator;
+import racinggame.component.RacingReporter;
+import racinggame.component.GameStateController;
 import racinggame.domain.Car;
 import racinggame.domain.CarNames;
 import racinggame.domain.Cars;
@@ -10,21 +12,23 @@ import racinggame.exception.RacingGameRuntimeException;
 import racinggame.view.InputView;
 import racinggame.view.OutputView;
 
-public class GameManager {
-    private final NumberGenerator numberGenerator;
+public class Circuit {
+    private final GameStateController stateController;
     private final RacingReporter racingReporter;
+    private final NumberGenerator numberGenerator;
 
-    public GameManager(final NumberGenerator numberGenerator, final RacingReporter racingReporter) {
-        this.numberGenerator = numberGenerator;
+    public Circuit(final GameStateController stateController, final RacingReporter racingReporter, final NumberGenerator numberGenerator) {
+        this.stateController = stateController;
         this.racingReporter = racingReporter;
+        this.numberGenerator = numberGenerator;
 
-        RemoteController.readyGame();
+        this.stateController.readyGame();
     }
 
-    public void start() {
-        RemoteController.startGame();
+    public void run() {
+        stateController.startGame();
 
-        while (RemoteController.isSustainable()) {
+        while (stateController.isSustainable()) {
             racing();
         }
     }
@@ -36,7 +40,7 @@ public class GameManager {
 
             round(laps, carNames);
 
-            RemoteController.terminateGame();
+            stateController.terminateGame();
         } catch (final RacingGameRuntimeException e) {
             OutputView.printError(e);
         }
