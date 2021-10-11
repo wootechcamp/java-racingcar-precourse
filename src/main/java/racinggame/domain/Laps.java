@@ -30,7 +30,7 @@ public class Laps {
 
     private void verifyLaps(final int inputLaps) {
         if (Numbers.isNegative(inputLaps)) {
-            throw new NotAllowNegativeException("시도회수들");
+            throw new NotAllowNegativeException("시도회수");
         }
     }
 }

@@ -11,7 +11,7 @@ public class RacingReporter {
     public RacingReporter() {
     }
 
-    public void analyze(Car car) {
+    public void analyze(final Car car) {
         OutputView.printMessage(car.toString());
 
         maximumDistance = Math.max(maximumDistance, car.getDistance().get());
