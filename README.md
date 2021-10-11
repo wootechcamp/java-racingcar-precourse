@@ -41,15 +41,15 @@
 
     * [x] 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다. => `laps`, `racinggame.view.InputView`
 
-    * [ ] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. => `award()`, `racinggame.view.OutputView`
+    * [x] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다.
 
-    * [ ] 우승자가 한 명 이상일 경우, 쉼표(,)로 이름을 구분해 출력한다. => `racinggame.GameManager`, `figureOutWinners(list)`
+    * [x] 우승자가 한 명 이상일 경우, 쉼표(,)로 이름을 구분해 출력한다.
 
-        * [ ] 한 명 이상인 경우 판단. => `isJointAward(list)`
+        * [x] 한 명 이상인 경우 판단. => `StringJoiner` 로 해결
     
-        * [ ] 쉼표로 이름을 구분해서 출력 => `String.join(",", list);`
+        * [x] 쉼표로 이름을 구분해서 출력 => `StringJoiner`
 
-    * [ ] 사용자가 잘못된 값을 입력할 경우 “[ERROR]”로 시작하는 에러 메시지를 출력 후 입력을 다시 받는다. => 게임을 컨트롤하는 객체에서 일괄적읜 공통 에러처리 및 메시지 출력 필요 => `racinggame.GameManager`
+    * [x] 사용자가 잘못된 값을 입력할 경우 “[ERROR]”로 시작하는 에러 메시지를 출력 후 입력을 다시 받는다. => 게임을 컨트롤하는 객체에서 일괄적읜 공통 에러처리 및 메시지 출력 필요 => `racinggame.GameManager`
 
 ## 기능 요구사항
 

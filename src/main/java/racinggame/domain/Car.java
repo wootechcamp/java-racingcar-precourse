@@ -1,21 +1,25 @@
 package racinggame.domain;
 
+import java.text.MessageFormat;
 import java.util.Objects;
 
 public class Car {
     private final CarName carName;
-    private final CarDistance carDistance;
+    private final CarDistance carDistance = CarDistance.newInstance();
 
-    public Car(final CarName carName, final CarDistance carDistance) {
+    public Car(final CarName carName) {
         this.carName = carName;
-        this.carDistance = carDistance;
     }
 
-    public CarName getCarName() {
+    public void move(final int number) {
+        carDistance.add(number);
+    }
+
+    public CarName getName() {
         return carName;
     }
 
-    public CarDistance getCarDistance() {
+    public CarDistance getDistance() {
         return carDistance;
     }
 
@@ -34,5 +38,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(carName);
+    }
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("{0} : {1}", carName, carDistance);
     }
 }

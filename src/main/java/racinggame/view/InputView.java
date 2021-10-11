@@ -1,7 +1,9 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
-import racinggame.exception.IllegalInputArgumentException;
+import racinggame.domain.CarNames;
+import racinggame.exception.NotAllowNegativeException;
+import racinggame.util.Numbers;
 
 public final class InputView {
 
@@ -9,13 +11,25 @@ public final class InputView {
     }
 
     public static int readLaps() {
-        // TODO: 2021/10/10 Lap 이라는 객체를 만들어서 해당 객체에게 역할을 위임하는 것이 좋을 것 같음.
-        try {
-            OutputView.printMessage("시도할 회수는 몇회인가요?");
+        OutputView.printMessage("시도할 회수는 몇회인가요?");
 
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalInputArgumentException("숫자만 입력할 수 있습니다.", e);
+        final String readLine = Console.readLine();
+        final int laps = Numbers.parseInt(readLine);
+
+        verifyLaps(laps);
+
+        return laps;
+    }
+
+    public static CarNames readCarNames() {
+        OutputView.printMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)기준으로 구분)");
+
+        return new CarNames(Console.readLine());
+    }
+
+    private static void verifyLaps(final int laps) {
+        if (Numbers.isNegative(laps)) {
+            throw new NotAllowNegativeException("시도할 회수");
         }
     }
 }
