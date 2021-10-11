@@ -11,7 +11,7 @@ public class RacingReporter {
     public RacingReporter() {
     }
 
-    public void analyze(Car car) {
+    public void analyze(final Car car) {
         OutputView.printMessage(car.toString());
 
         maximumDistance = Math.max(maximumDistance, car.getDistance().get());
@@ -28,12 +28,14 @@ public class RacingReporter {
     }
 
     private void joinWinner(final StringJoiner prize, final Car car) {
-        if (isJointAward(car)) {
-            prize.add(car.getName().toString());
+        if (isNotJointAward(car)) {
+            return;
         }
+
+        prize.add(car.getName().toString());
     }
 
-    private boolean isJointAward(Car car) {
-        return car.getDistance().get() == maximumDistance;
+    private boolean isNotJointAward(Car car) {
+        return car.getDistance().get() != maximumDistance;
     }
 }

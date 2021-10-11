@@ -4,6 +4,8 @@ import racinggame.component.NumberGenerator;
 import racinggame.domain.Car;
 import racinggame.domain.CarNames;
 import racinggame.domain.Cars;
+import racinggame.domain.Lap;
+import racinggame.domain.Laps;
 import racinggame.enums.GameStatus;
 import racinggame.exception.RacingGameRuntimeException;
 import racinggame.view.InputView;
@@ -12,11 +14,11 @@ import racinggame.view.OutputView;
 public class GameManager {
     private static GameStatus gameStatus;
 
-    private final NumberGenerator generator;
+    private final NumberGenerator numberGenerator;
     private final RacingReporter racingReporter;
 
-    public GameManager(final NumberGenerator generator, final RacingReporter racingReporter) {
-        this.generator = generator;
+    public GameManager(final NumberGenerator numberGenerator, final RacingReporter racingReporter) {
+        this.numberGenerator = numberGenerator;
         this.racingReporter = racingReporter;
 
         readyGame();
@@ -33,22 +35,22 @@ public class GameManager {
     private void racing() {
         try {
             final CarNames carNames = InputView.readCarNames();
-            final int readLaps = InputView.readLaps();
+            final Laps laps = InputView.readLaps();
 
-            round(readLaps, carNames);
+            round(laps, carNames);
             terminateGame();
         } catch (final RacingGameRuntimeException e) {
             OutputView.printError(e);
         }
     }
 
-    private void round(final int laps, final CarNames carNames) {
+    private void round(final Laps laps, final CarNames carNames) {
         final Cars cars = new Cars(carNames);
 
         OutputView.lineSeparator();
         OutputView.printMessage("실행 결과");
 
-        for (int lap = 0; lap < laps; lap++) {
+        for (Lap ignored : laps.get()) {
             racingPerLap(cars);
 
             OutputView.lineSeparator();
@@ -59,7 +61,7 @@ public class GameManager {
 
     private void racingPerLap(final Cars cars) {
         for (Car car : cars.get()) {
-            car.move(generator.generate());
+            car.move(numberGenerator.generate());
 
             racingReporter.analyze(car);
         }
