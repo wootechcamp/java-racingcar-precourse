@@ -19,9 +19,8 @@ class CarDistanceTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void 자동차는_숫자가_4이상이면_전진한다(int number) {
         final CarDistance carDistance = CarDistance.newInstance();
-        carDistance.add(number);
 
-        assertThat(carDistance.get()).isGreaterThan(0);
+        assertThat(carDistance.add(number).get()).isGreaterThan(0);
     }
 
     @ParameterizedTest(name = "[{argumentsWithNames}] 자동차는 숫자가 3이하이면 정지한다")
@@ -30,6 +29,6 @@ class CarDistanceTest {
         final CarDistance carDistance = CarDistance.newInstance();
         carDistance.add(number);
 
-        assertThat(carDistance.get()).isEqualTo(0);
+        assertThat(carDistance.add(number).get()).isEqualTo(0);
     }
 }

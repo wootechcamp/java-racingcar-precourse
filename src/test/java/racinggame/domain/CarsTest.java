@@ -14,6 +14,6 @@ class CarsTest {
     void CarNames_가지고_Cars_일급컬렉션을_만든다(String namesWithComma) {
         final Cars cars = new Cars(new CarNames(namesWithComma));
 
-        assertThat(cars.get()).containsAll(new Cars(new CarNames(namesWithComma)).get());
+        assertThat(cars.get()).isEqualTo(new Cars(new CarNames(namesWithComma)).get());
     }
 }
