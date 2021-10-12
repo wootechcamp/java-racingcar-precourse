@@ -5,12 +5,12 @@ public final class OutputView {
     private OutputView() {
     }
 
-    public static void printMessage(final String message) {
-        System.out.println(message);
-    }
-
     public static void lineSeparator() {
         System.out.println();
+    }
+
+    public static void printMessage(final String message) {
+        System.out.println(message);
     }
 
     public static void printError(final Throwable cause) {
