@@ -9,7 +9,7 @@ public class CarDistance {
     public static final int MOVABLE_MINIMUM_NUMBER = 4;
     public static final int IMMOVABLE_MAXIMUM_NUMBER = 3;
 
-    private int distance;
+    private final int distance;
 
     private CarDistance(int distance) {
         this.distance = distance;
@@ -19,10 +19,10 @@ public class CarDistance {
         return new CarDistance(0);
     }
 
-    public void add(final int number) {
+    public CarDistance add(final int number) {
         verifyDistance(number);
 
-        distance += judge(number);
+        return new CarDistance(distance + judge(number));
     }
 
     public int get() {

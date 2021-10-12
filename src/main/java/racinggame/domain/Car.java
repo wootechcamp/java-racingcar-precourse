@@ -5,14 +5,14 @@ import java.util.Objects;
 
 public class Car {
     private final CarName carName;
-    private final CarDistance carDistance = CarDistance.newInstance();
+    private CarDistance carDistance = CarDistance.newInstance();
 
     public Car(final CarName carName) {
         this.carName = carName;
     }
 
     public void move(final int number) {
-        carDistance.add(number);
+        this.carDistance = carDistance.add(number);
     }
 
     public CarName getName() {

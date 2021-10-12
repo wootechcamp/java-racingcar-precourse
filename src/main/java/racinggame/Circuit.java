@@ -1,9 +1,8 @@
 package racinggame;
 
-import racinggame.component.NumberGenerator;
-import racinggame.component.RacingReporter;
 import racinggame.component.GameStateController;
-import racinggame.domain.Car;
+import racinggame.component.NumberGenerator;
+import racinggame.domain.CarHistory;
 import racinggame.domain.CarNames;
 import racinggame.domain.Cars;
 import racinggame.domain.Lap;
@@ -14,12 +13,13 @@ import racinggame.view.OutputView;
 
 public class Circuit {
     private final GameStateController stateController;
-    private final RacingReporter racingReporter;
     private final NumberGenerator numberGenerator;
+    private final CarHistory carHistory;
 
-    public Circuit(final GameStateController stateController, final RacingReporter racingReporter, final NumberGenerator numberGenerator) {
+    public Circuit(final GameStateController stateController, final CarHistory carHistory,
+        final NumberGenerator numberGenerator) {
         this.stateController = stateController;
-        this.racingReporter = racingReporter;
+        this.carHistory = carHistory;
         this.numberGenerator = numberGenerator;
 
         this.stateController.readyGame();
@@ -53,19 +53,12 @@ public class Circuit {
         OutputView.printMessage("실행 결과");
 
         for (Lap ignored : laps.get()) {
-            racingPerLap(cars);
+            carHistory.record(cars.move(numberGenerator));
 
+            OutputView.printMessage(carHistory.load());
             OutputView.lineSeparator();
         }
 
-        racingReporter.prizeToWinners(cars);
-    }
-
-    private void racingPerLap(final Cars cars) {
-        for (Car car : cars.get()) {
-            car.move(numberGenerator.generate());
-
-            racingReporter.analyze(car);
-        }
+        OutputView.printMessage(carHistory.getWinners());
     }
 }
