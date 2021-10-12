@@ -1,6 +1,6 @@
 package racinggame;
 
-import racinggame.component.GameStateController;
+import racinggame.component.GameStateManager;
 import racinggame.component.NumberGenerator;
 import racinggame.domain.CarHistory;
 import racinggame.domain.CarNames;
@@ -12,11 +12,11 @@ import racinggame.view.InputView;
 import racinggame.view.OutputView;
 
 public class Circuit {
-    private final GameStateController stateController;
+    private final GameStateManager stateController;
     private final NumberGenerator numberGenerator;
     private final CarHistory carHistory;
 
-    public Circuit(final GameStateController stateController, final CarHistory carHistory,
+    public Circuit(final GameStateManager stateController, final CarHistory carHistory,
         final NumberGenerator numberGenerator) {
         this.stateController = stateController;
         this.carHistory = carHistory;

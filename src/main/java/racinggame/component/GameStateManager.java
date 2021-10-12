@@ -3,7 +3,7 @@ package racinggame.component;
 import java.util.EnumSet;
 import racinggame.enums.GameStatus;
 
-public class GameStateController {
+public class GameStateManager {
     private static GameStatus gameStatus;
 
     public boolean isSustainable() {
