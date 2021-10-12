@@ -42,6 +42,6 @@ public class CarHistory {
     }
 
     private boolean isNotJointAward(final Car car) {
-        return MAXIMUM_DISTANCE != car.getDistance().get();
+        return car.getDistance().get() != MAXIMUM_DISTANCE;
     }
 }
