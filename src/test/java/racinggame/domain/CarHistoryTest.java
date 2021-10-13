@@ -24,23 +24,4 @@ class CarHistoryTest {
 
         assertThat(load).contains("티볼리", "제네시스", "소울", "레이");
     }
-
-    @Test
-    void 자동차의_히스토리에서_우승자를_구할수있다() {
-        try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
-            mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                .thenReturn(2, 4, 3, 4, 3);
-        }
-
-        final String namesWithComma = "티볼리,제네시스";
-        final CarNames carNames = new CarNames(namesWithComma);
-        final Cars cars = new Cars(carNames);
-
-        final CarHistory carHistory = new CarHistory();
-        carHistory.record(cars);
-
-        final String winners = carHistory.getWinners();
-
-        assertThat(winners).containsOnlyOnce("티볼리").containsIgnoringCase("제네시스");
-    }
 }
